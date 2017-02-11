@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Import components
-import {PatternLabComponent} from 'patternlab-react-component'
+import {PatternLabComponent} from '@peteyg/patternlab-react-component'
 import SGPatternHead from '../organisms/pattern/SGPatternHead'
 import SGPatternExtra from '../organisms/pattern/SGPatternExtra'
 

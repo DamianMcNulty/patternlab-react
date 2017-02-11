@@ -1,8 +1,7 @@
 import React from 'react'
 
 // Import components
-// import PatternLabComponent from '../../../../../component/dist/components/PatternLabComponent'
-import {PatternLabComponent} from 'patternlab-react-component'
+import {PatternLabComponent} from '@peteyg/patternlab-react-component'
 import SGMenuItem from '../../atoms/menu/SGMenuItem'
 
 import patternLabConfig from '../../../get-sm-config'

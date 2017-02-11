@@ -12,7 +12,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _patternlabReactComponent = require('patternlab-react-component');
+var _patternlabReactComponent = require('@peteyg/patternlab-react-component');
 
 var _SGPatternHead = require('../organisms/pattern/SGPatternHead');
 

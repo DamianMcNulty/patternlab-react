@@ -1,9 +1,11 @@
 'use strict';
 
-var sourcemapConfig = require('../../../patternlab-sm.conf.js');
-
 var getSourcemapConfig = function getSourcemapConfig() {
-    return sourcemapConfig();
+    try {
+        var sourcemapConfig = require('../../../patternlab-sm.conf.js');
+        return sourcemapConfig();
+    } catch (error) {
+        return {};
+    }
 };
-
 module.exports = getSourcemapConfig;
