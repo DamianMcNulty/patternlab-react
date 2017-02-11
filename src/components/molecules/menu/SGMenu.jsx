@@ -6,7 +6,11 @@ import SGMenuItem from '../../atoms/menu/SGMenuItem'
 
 import patternLabConfig from '../../../get-sm-config'
 const config = patternLabConfig()
-const {componentList} = config.patternLabSourcemap
+
+let componentList = []
+if (config && config.patternLabSourcemap) {
+    componentList = config.patternLabSourcemap.componentList
+} 
 
 // Declare this component
 class SGMenu extends React.Component {

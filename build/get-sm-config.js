@@ -5,7 +5,7 @@ var getSourcemapConfig = function getSourcemapConfig() {
         var sourcemapConfig = require('../../../patternlab-sm.conf.js');
         return sourcemapConfig();
     } catch (error) {
-        return {};
+        return null;
     }
 };
 module.exports = getSourcemapConfig;
