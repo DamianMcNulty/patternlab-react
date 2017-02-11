@@ -3,7 +3,10 @@ import React from 'react'
 // Get menu items from generated file
 import patternLabConfig from '../../../get-sm-config'
 const config = patternLabConfig()
-const {jsonFileStruc} = config.patternLabSourcemap
+let jsonFileStruc = []
+if (config && config.patternLabSourcemap) {
+    jsonFileStruc = config.patternLabSourcemap.jsonFileStruc
+} 
 
 // Import components
 import SGMenu from '../../molecules/menu/SGMenu'
@@ -22,6 +25,7 @@ export default class SGPrimaryNav extends React.Component {
     _getRootMenuItems() {
         let menuItems = []
         jsonFileStruc.filter(item => {
+                if (!config || !config.defaultOrder) return true
                 const order = config.defaultOrder.indexOf(item.name)
                 if (order >= 0) {
                     menuItems[order] = item
