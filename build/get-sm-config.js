@@ -5,7 +5,13 @@ var getSourcemapConfig = function getSourcemapConfig() {
         var sourcemapConfig = require('../../../patternlab-sm.conf.js');
         return sourcemapConfig();
     } catch (error) {
-        return null;
+        return {
+            patternLabSourcemap: {
+                jsonFileStruc: [],
+                componentList: []
+            },
+            defaultOrder: []
+        };
     }
 };
 module.exports = getSourcemapConfig;

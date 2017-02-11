@@ -30,10 +30,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var config = (0, _getSmConfig2.default)();
-var jsonFileStruc = [];
-if (config && config.patternLabSourcemap) {
-    jsonFileStruc = config.patternLabSourcemap.jsonFileStruc;
-}
+var jsonFileStruc = config.patternLabSourcemap.jsonFileStruc;
 
 // Import components
 
@@ -60,7 +57,6 @@ var SGPrimaryNav = function (_React$Component) {
         value: function _getRootMenuItems() {
             var menuItems = [];
             jsonFileStruc.filter(function (item) {
-                if (!config || !config.defaultOrder) return true;
                 var order = config.defaultOrder.indexOf(item.name);
                 if (order >= 0) {
                     menuItems[order] = item;

@@ -34,11 +34,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var config = (0, _getSmConfig2.default)();
-
-var componentList = [];
-if (config && config.patternLabSourcemap) {
-    componentList = config.patternLabSourcemap.componentList;
-}
+var componentList = config.patternLabSourcemap.componentList;
 
 // Declare this component
 

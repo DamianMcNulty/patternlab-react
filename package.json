@@ -1,6 +1,6 @@
 {
   "name": "@peteyg/patternlab-react",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Build pattern lab style guide for your react components",
   "main": "build/index.js",
   "scripts": {
