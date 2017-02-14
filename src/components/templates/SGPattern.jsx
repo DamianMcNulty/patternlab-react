@@ -56,12 +56,13 @@ export default class SGPattern extends React.Component {
     }
 
     _setFakeProps(element) {
-        const fakeProps = element.type.fakeProps
-        if (fakeProps)
-            element.props = {
-                ...element.props,
-                ...fakeProps
-            }
+        // TODO: fix this (props readonly error)
+        // const fakeProps = element.type.fakeProps
+        // if (fakeProps)
+        //     element.props = {
+        //         ...element.props,
+        //         ...fakeProps
+        //     }
         return element
     }
 
