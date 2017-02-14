@@ -63,7 +63,7 @@ var generateSourcemap = function generateSourcemap() {
                         results.push({
                             //    importText: "import " + componentNamepace + " from '" + listItemPath + "'",
                             importText: "var " + componentNamepace + " = require('" + listItemPath + "')",
-                            arrayText: "'" + arrayKey + "' : " + componentNamepace
+                            arrayText: "'" + arrayKey + "' : " + componentNamepace + ".default"
                         });
                         results2.push({
                             type: 'file',
