@@ -61,8 +61,8 @@ var generateSourcemap = function generateSourcemap() {
                         var componentNamepace = noSlashNamespace + componentName;
                         var arrayKey = componentPath + '/' + componentName;
                         results.push({
-                            importText: "import " + componentNamepace + " from '" + listItemPath + "'",
-                            // importText: "const " + componentNamepace + " = require('" + listItemPath + "')",
+                            //    importText: "import " + componentNamepace + " from '" + listItemPath + "'",
+                            importText: "var " + componentNamepace + " = require('" + listItemPath + "')",
                             arrayText: "'" + arrayKey + "' : " + componentNamepace
                         });
                         results2.push({
@@ -91,14 +91,15 @@ var generateSourcemap = function generateSourcemap() {
         if (err) console.error(err);
 
         var importComponents = '';
-        var componentList = '\nexport const componentList = {\n';
+        // let componentList = '\nexport const componentList = {\n'
+        var componentList = '\nexports.componentList = {\n';
         result.forEach(function (res) {
             importComponents += res.importText + '\n';
             componentList += res.arrayText + ',\n';
         });
         componentList += '}';
 
-        var jsonFileStruc = '\nexport const jsonFileStruc = ' + JSON.stringify(result2);
+        var jsonFileStruc = '\nexports.jsonFileStruc = ' + JSON.stringify(result2);
 
         var fullSavePath = _this2.config.saveSourcemapPath;
         var fileContent = importComponents + componentList + jsonFileStruc;
