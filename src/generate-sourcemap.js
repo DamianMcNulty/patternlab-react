@@ -57,8 +57,8 @@ var generateSourcemap = function() {
                             const arrayKey = componentPath + '/' + componentName
                             results.push(
                                 {
-                                   importText: "import " + componentNamepace + " from '" + listItemPath + "'",
-                                    // importText: "const " + componentNamepace + " = require('" + listItemPath + "')",
+                                //    importText: "import " + componentNamepace + " from '" + listItemPath + "'",
+                                    importText: "var " + componentNamepace + " = require('" + listItemPath + "')",
                                     arrayText: "'" + arrayKey + "' : " + componentNamepace
                                 }
                             )
@@ -89,14 +89,15 @@ var generateSourcemap = function() {
         if(err) console.error(err)
 
         let importComponents = ''
-        let componentList = '\nexport const componentList = {\n'
+        // let componentList = '\nexport const componentList = {\n'
+        let componentList = '\nexports.componentList = {\n'
         result.forEach(res => {
             importComponents += res.importText + '\n'
             componentList += res.arrayText + ',\n'
         })
         componentList += '}'
 
-        const jsonFileStruc = '\nexport const jsonFileStruc = ' + JSON.stringify(result2)
+        const jsonFileStruc = '\nexports.jsonFileStruc = ' + JSON.stringify(result2)
 
         const fullSavePath = this.config.saveSourcemapPath
         const fileContent = importComponents + componentList + jsonFileStruc

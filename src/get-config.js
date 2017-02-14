@@ -1,6 +1,7 @@
+var projectRoot = '../../../../';
 var getConfig = function() {
     try {
-        var patternLabConfig = require('../../../patternlab.conf.js')
+        var patternLabConfig = require(projectRoot + 'patternlab.conf.js')
         return {
             ...patternLabConfig(),
             sourcemapConfigPath: './patternlab-sm.conf.js'
