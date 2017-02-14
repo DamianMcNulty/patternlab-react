@@ -92,8 +92,13 @@ var SGPattern = function (_React$Component) {
     }, {
         key: '_setFakeProps',
         value: function _setFakeProps(element) {
-            var fakeProps = element.type.fakeProps;
-            if (fakeProps) element.props = _extends({}, element.props, fakeProps);
+            // TODO: fix this (props readonly error)
+            // const fakeProps = element.type.fakeProps
+            // if (fakeProps)
+            //     element.props = {
+            //         ...element.props,
+            //         ...fakeProps
+            //     }
             return element;
         }
     }, {
