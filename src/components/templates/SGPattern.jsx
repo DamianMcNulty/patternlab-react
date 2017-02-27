@@ -11,12 +11,38 @@ export default class SGPattern extends React.Component {
         super(props)
 
         this.state = {
-            extraActive: false
+            extraActive: false,
+            patternProps: {}
         }
     }
 
+    componentWillMount() {
+        this._updateComponentState(this.props)
+    }
+
+    _updateComponentState(props) {
+        this.setState({
+            ...this.state,
+            patternState: this._getPatternState(props)
+        })
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        if (this.props.componentKey != nextProps.componentKey)
+            this._updateComponentState(nextProps)
+    }
+
     _getPatternProps() {
-        const pattern = this.props.pattern
+        return {
+            ...this.state.patternState,
+            extraToggleClass: this._getToggleExtraClass()
+        }
+
+    }
+
+
+    _getPatternState(props) {
+        const pattern = props.pattern
 
         let patternProps = {
             extraToggleClass: this._getToggleExtraClass(),
@@ -47,6 +73,7 @@ export default class SGPattern extends React.Component {
     _toggleExtra(evt) {
         evt.preventDefault()
         this.setState({
+            ...this.state,
             extraActive: !this.state.extraActive
         })
     }
@@ -56,19 +83,18 @@ export default class SGPattern extends React.Component {
     }
 
     _setFakeProps(element) {
-        // TODO: fix this (props readonly error)
-        // const fakeProps = element.type.fakeProps
-        // if (fakeProps)
-        //     element.props = {
-        //         ...element.props,
-        //         ...fakeProps
-        //     }
+        const fakeProps = element.fakeProps
+        if (fakeProps)
+            element.defaultProps = {
+                ...element.defaultProps,
+                ...fakeProps
+            }
         return element
     }
 
     _getElement() {
-        let element = React.createElement(this.props.pattern)
-        return this._setFakeProps(element)
+        const pattern = this._setFakeProps(this.props.pattern)
+        return React.createElement(pattern)
     }
 
     _getPatternId() {

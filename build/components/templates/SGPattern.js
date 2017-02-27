@@ -43,15 +43,40 @@ var SGPattern = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (SGPattern.__proto__ || Object.getPrototypeOf(SGPattern)).call(this, props));
 
         _this.state = {
-            extraActive: false
+            extraActive: false,
+            patternProps: {}
         };
         return _this;
     }
 
     _createClass(SGPattern, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this._updateComponentState(this.props);
+        }
+    }, {
+        key: '_updateComponentState',
+        value: function _updateComponentState(props) {
+            this.setState(_extends({}, this.state, {
+                patternState: this._getPatternState(props)
+            }));
+        }
+    }, {
+        key: 'componentWillUpdate',
+        value: function componentWillUpdate(nextProps, nextState) {
+            if (this.props.componentKey != nextProps.componentKey) this._updateComponentState(nextProps);
+        }
+    }, {
         key: '_getPatternProps',
         value: function _getPatternProps() {
-            var pattern = this.props.pattern;
+            return _extends({}, this.state.patternState, {
+                extraToggleClass: this._getToggleExtraClass()
+            });
+        }
+    }, {
+        key: '_getPatternState',
+        value: function _getPatternState(props) {
+            var pattern = props.pattern;
 
             var patternProps = {
                 extraToggleClass: this._getToggleExtraClass(),
@@ -80,9 +105,9 @@ var SGPattern = function (_React$Component) {
         key: '_toggleExtra',
         value: function _toggleExtra(evt) {
             evt.preventDefault();
-            this.setState({
+            this.setState(_extends({}, this.state, {
                 extraActive: !this.state.extraActive
-            });
+            }));
         }
     }, {
         key: '_getToggleExtraClass',
@@ -92,20 +117,15 @@ var SGPattern = function (_React$Component) {
     }, {
         key: '_setFakeProps',
         value: function _setFakeProps(element) {
-            // TODO: fix this (props readonly error)
-            // const fakeProps = element.type.fakeProps
-            // if (fakeProps)
-            //     element.props = {
-            //         ...element.props,
-            //         ...fakeProps
-            //     }
+            var fakeProps = element.fakeProps;
+            if (fakeProps) element.defaultProps = _extends({}, element.defaultProps, fakeProps);
             return element;
         }
     }, {
         key: '_getElement',
         value: function _getElement() {
-            var element = _react2.default.createElement(this.props.pattern);
-            return this._setFakeProps(element);
+            var pattern = this._setFakeProps(this.props.pattern);
+            return _react2.default.createElement(pattern);
         }
     }, {
         key: '_getPatternId',
