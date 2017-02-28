@@ -107,18 +107,18 @@ var generateSourcemap = function() {
         })
 
         // conf
-        if (this.config.createSourcemapConfig) {
+        const confFullSavePath = this.config.sourcemapConfigPath
+        //if (!fs.existsSync(confFullSavePath)) {
             const smConf = 'module.exports = function() { return {\n' + 
-                            'patternLabSourcemap: require("'+ this.config.loadSourcemapPath +'"),\n' + 
+                            'patternLabSourcemap: require("'+ this.config.saveSourcemapPath +'"),\n' + 
                             'defaultOrder: ' + JSON.stringify(this.config.defaultOrder) + '\n' + 
                             '}}'
 
-            const confFullSavePath = this.config.sourcemapConfigPath
             fs.writeFile(confFullSavePath, smConf, function(err) {
                 if(err) return console.log(err)
                 console.log("Config file saved: " + confFullSavePath)
             })
-        }
+        //}
     })
 
 }
