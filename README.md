@@ -15,6 +15,7 @@ For an example of how to implement this module, check out
 [patternlab-react-demo](https://github.com/peteyg99/patternlab-react-demo).
 
 
+
 ## Usage
 
 ### Install
@@ -41,7 +42,37 @@ export default Routes = (
 )
 ```
 
-### Setup
+### patternlab-react-component
+
+Extend your react component to add a description etc.
+
+See [patternlab-react-component](https://github.com/peteyg99/patternlab-react-component) 
+for more details.
+
+```
+import React from 'react';
+import { PatternLabComponent } from '@peteyg/patternlab-react-component';
+
+class MyComponent extends PatternLabComponent {
+    static getTitle() {
+        return "Foo";
+    }
+    static getDescription() {
+        return "Bar";
+    }
+    render() {
+        return (
+            ...
+        )
+    }
+}
+```
+
+
+
+## Build process
+
+### Configuration file
 
 Create a setup file in the root of your project: **patternlab.conf.js**
 
