@@ -109,17 +109,15 @@ var generateSourcemap = function generateSourcemap() {
         });
 
         // conf
-        if (_this2.config.createSourcemapConfig) {
-            (function () {
-                var smConf = 'module.exports = function() { return {\n' + 'patternLabSourcemap: require("' + _this2.config.loadSourcemapPath + '"),\n' + 'defaultOrder: ' + JSON.stringify(_this2.config.defaultOrder) + '\n' + '}}';
+        var confFullSavePath = _this2.config.sourcemapConfigPath;
+        //if (!fs.existsSync(confFullSavePath)) {
+        var smConf = 'module.exports = function() { return {\n' + 'patternLabSourcemap: require("' + _this2.config.saveSourcemapPath + '"),\n' + 'defaultOrder: ' + JSON.stringify(_this2.config.defaultOrder) + '\n' + '}}';
 
-                var confFullSavePath = _this2.config.sourcemapConfigPath;
-                fs.writeFile(confFullSavePath, smConf, function (err) {
-                    if (err) return console.log(err);
-                    console.log("Config file saved: " + confFullSavePath);
-                });
-            })();
-        }
+        fs.writeFile(confFullSavePath, smConf, function (err) {
+            if (err) return console.log(err);
+            console.log("Config file saved: " + confFullSavePath);
+        });
+        //}
     });
 };
 
