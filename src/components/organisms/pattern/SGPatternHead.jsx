@@ -21,7 +21,7 @@ class SGPatternHead extends React.Component {
         return (
             <div className="sg-pattern-head">
                 <h3 className="sg-pattern-title">
-                    <Link to={this.props.componentKey} className="patternLink" title="Link to Pattern">
+                    <Link to={'/style-guide/' + this.props.componentKey} className="patternLink" title="Link to Pattern">
                         {this.props.componentTitle}
                     </Link>
                 </h3>

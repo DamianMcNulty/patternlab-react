@@ -61,7 +61,7 @@ var SGPatternHead = function (_React$Component) {
                     { className: 'sg-pattern-title' },
                     _react2.default.createElement(
                         _reactRouter.Link,
-                        { to: this.props.componentKey, className: 'patternLink', title: 'Link to Pattern' },
+                        { to: '/style-guide/' + this.props.componentKey, className: 'patternLink', title: 'Link to Pattern' },
                         this.props.componentTitle
                     )
                 ),
