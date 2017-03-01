@@ -88,7 +88,7 @@ export default class SGPrimaryNav extends React.Component {
                 <a href="#" className="sg-nav-toggle" onClick={this._toggleRootMenu.bind(this)}>
                     Menu
                 </a>
-                <div className="sg-nav-container">
+                <div className={containerClass}>
                     <SGMenu {...props} />
                 </div>
             </div>

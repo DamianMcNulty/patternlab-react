@@ -139,7 +139,7 @@ var SGPrimaryNav = function (_React$Component) {
                 ),
                 _react2.default.createElement(
                     'div',
-                    { className: 'sg-nav-container' },
+                    { className: containerClass },
                     _react2.default.createElement(_SGMenu2.default, props)
                 )
             );
