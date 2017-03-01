@@ -4,6 +4,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -44,6 +46,7 @@ var SGPrimaryNav = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (SGPrimaryNav.__proto__ || Object.getPrototypeOf(SGPrimaryNav)).call(this, props));
 
         _this.state = {
+            rootMenuActive: false,
             activeMenus: []
         };
         return _this;
@@ -70,11 +73,14 @@ var SGPrimaryNav = function (_React$Component) {
             return menuItems;
         }
 
-        // Update activeMenus
+        // Update activeMenus (NB. no menuItemKey signifies a reset, ie. click link)
 
     }, {
         key: '_onClick',
         value: function _onClick(menuLevel, menuItemKey, evt) {
+            // Get root menu active
+            var rootMenuActive = menuItemKey ? this.state.rootMenuActive : false;
+
             // If level 0 start a fresh list
             var activeMenus = menuLevel ? this.state.activeMenus : [];
 
@@ -86,6 +92,7 @@ var SGPrimaryNav = function (_React$Component) {
             }
 
             this.setState({
+                rootMenuActive: rootMenuActive,
                 activeMenus: activeMenus
             });
         }
@@ -97,6 +104,17 @@ var SGPrimaryNav = function (_React$Component) {
         value: function _getActiveMenu(menuItemKey) {
             return this.state.activeMenus[menuItemKey];
         }
+
+        // Toggle root menu (small device view)
+
+    }, {
+        key: '_toggleRootMenu',
+        value: function _toggleRootMenu(evt) {
+            evt.preventDefault();
+            this.setState(_extends({}, this.state, {
+                rootMenuActive: !this.state.rootMenuActive
+            }));
+        }
     }, {
         key: 'render',
         value: function render() {
@@ -107,11 +125,23 @@ var SGPrimaryNav = function (_React$Component) {
                 _onClick: this._onClick.bind(this)
             };
 
+            var containerClass = "sg-nav-container";
+            if (this.state.rootMenuActive) containerClass += " active";
+
             // Return JSX
             return _react2.default.createElement(
                 'div',
-                { className: 'sg-nav-container' },
-                _react2.default.createElement(_SGMenu2.default, props)
+                null,
+                _react2.default.createElement(
+                    'a',
+                    { href: '#', className: 'sg-nav-toggle', onClick: this._toggleRootMenu.bind(this) },
+                    'Menu'
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'sg-nav-container' },
+                    _react2.default.createElement(_SGMenu2.default, props)
+                )
             );
         }
     }]);

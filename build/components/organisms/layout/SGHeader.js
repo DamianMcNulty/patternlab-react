@@ -38,17 +38,10 @@ var SGHeader = function (_React$Component) {
     _createClass(SGHeader, [{
         key: 'render',
         value: function render() {
-            // TODO: setup toggle button
-
             // Return JSX
             return _react2.default.createElement(
                 'header',
                 { className: 'sg-header', role: 'banner' },
-                _react2.default.createElement(
-                    'a',
-                    { href: '#sg-nav-container', className: 'sg-nav-toggle' },
-                    'Menu'
-                ),
                 _react2.default.createElement(_SGPrimaryNav2.default, null)
             );
         }

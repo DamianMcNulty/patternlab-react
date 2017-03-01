@@ -14,6 +14,7 @@ export default class SGPrimaryNav extends React.Component {
         super(props)
 
         this.state = {
+            rootMenuActive: false,
             activeMenus: []
         }
     }
@@ -35,8 +36,11 @@ export default class SGPrimaryNav extends React.Component {
         return menuItems
     }
 
-    // Update activeMenus
+    // Update activeMenus (NB. no menuItemKey signifies a reset, ie. click link)
     _onClick(menuLevel, menuItemKey, evt) {
+        // Get root menu active
+        const rootMenuActive = menuItemKey ? this.state.rootMenuActive : false
+
         // If level 0 start a fresh list
         let activeMenus = menuLevel ? this.state.activeMenus : []
         
@@ -48,6 +52,7 @@ export default class SGPrimaryNav extends React.Component {
         }
 
         this.setState({
+            rootMenuActive,
             activeMenus
         })
     }
@@ -55,6 +60,15 @@ export default class SGPrimaryNav extends React.Component {
     // Return if menu is active
     _getActiveMenu(menuItemKey) {
         return (this.state.activeMenus[menuItemKey])
+    }
+
+    // Toggle root menu (small device view)
+    _toggleRootMenu(evt) {
+        evt.preventDefault()
+        this.setState({
+            ...this.state,
+            rootMenuActive: !this.state.rootMenuActive
+        })
     }
 
     render() {
@@ -65,10 +79,18 @@ export default class SGPrimaryNav extends React.Component {
             _onClick: this._onClick.bind(this)
         }
 
+        let containerClass = "sg-nav-container"
+        if (this.state.rootMenuActive) containerClass += " active"
+
         // Return JSX
         return (
-            <div className="sg-nav-container">
-                <SGMenu {...props} />
+            <div>
+                <a href="#" className="sg-nav-toggle" onClick={this._toggleRootMenu.bind(this)}>
+                    Menu
+                </a>
+                <div className="sg-nav-container">
+                    <SGMenu {...props} />
+                </div>
             </div>
         )
     }
