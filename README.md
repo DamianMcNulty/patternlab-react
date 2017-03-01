@@ -66,6 +66,8 @@ class MyComponent extends PatternLabComponent {
         )
     }
 }
+
+export default class MyComponent;
 ```
 
 
@@ -115,14 +117,14 @@ to read, eg:
 
 ```
 var patternlab = require('@peteyg/patternlab-react');
-patternlab..generateSourcemap();
+patternlab.generateSourcemap();
 ```
 or:
 ```
 node -e 'require("@peteyg/patternlab-react").generateSourcemap()'
 ```
 
-### Configuration options
+## Configuration options
 #### componentsRootPath
 The root path of your *compiled* components (ie. not ES6).
 #### saveSourcemapPath
