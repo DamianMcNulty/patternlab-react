@@ -46,9 +46,9 @@ export default class SGPattern extends React.Component {
 
         let patternProps = {
             extraToggleClass: this._getToggleExtraClass(),
-            linkToComponent: '#', //TODO
             patternLabComponent: false,
-            componentTitle: pattern.name
+            componentTitle: pattern.name,
+            componentKey: this.props.componentKey
         }
 
         // if (!(pattern.prototype instanceof PatternLabComponent)) 

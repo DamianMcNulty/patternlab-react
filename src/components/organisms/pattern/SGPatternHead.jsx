@@ -1,7 +1,5 @@
 import React from 'react'
-
-// Import components
-// import SGTileList from '../molecules/SGTileList'
+import {Link} from 'react-router'
 
 // Declare this component
 class SGPatternHead extends React.Component {
@@ -23,9 +21,9 @@ class SGPatternHead extends React.Component {
         return (
             <div className="sg-pattern-head">
                 <h3 className="sg-pattern-title">
-                    <a href={this.props.linkToComponent} className="patternLink" title="Link to Pattern">
+                    <Link to={this.props.componentKey} className="patternLink" title="Link to Pattern">
                         {this.props.componentTitle}
-                    </a>
+                    </Link>
                 </h3>
                 {this._getExtraToggle()}
             </div>
@@ -43,7 +41,7 @@ SGPatternHead.defaultProps = {
 SGPatternHead.propTypes = {
     patternLabComponent: React.PropTypes.bool.isRequired,
     extraToggleClass: React.PropTypes.string.isRequired,
-    linkToComponent: React.PropTypes.string.isRequired,
+    componentKey: React.PropTypes.string.isRequired,
     componentTitle: React.PropTypes.string.isRequired,
     _toggleExtra: React.PropTypes.func
 }
