@@ -1,13 +1,15 @@
 **Under development**
 # patternlab-react
 
-> Build patternlab style guide for your react components
+> Build React style guide for your React site components
 
-A variation on [Patternlab](http://patternlab.io/) which is an awesome tool for 
+**Please note, there is an official react patternengine for patternlab-node here: [patternengine-node-react](https://github.com/pattern-lab/patternengine-node-react)**
+
+
+A variation on [Pattern Lab](http://patternlab.io/) which is an awesome tool for 
 building style guides based on the [Atomic design](http://atomicdesign.bradfrost.com/) system.
 
-As React is a component based architecture this module auto-generates a 
-Style Guide for your React project.
+This module auto-generates a React style guide for your React project.
 
 ## Demo
 
